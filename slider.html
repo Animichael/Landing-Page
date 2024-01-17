@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Moving Slider Example</title>
+    <style>
+        .slider-container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            flex: 0 0 100%;
+        }
+        .slide img {
+            width: 50%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slides">
+            <div class="slide">
+                <img src="./institute.jpg" alt="Slide 1" width="200" height="200">
+            </div>
+            <div class="slide">
+                <img src="./software.png" alt="Slide 2" width="200" height="200">
+            </div>
+            <div class="slide">
+                <img src="./neoCloud.png" alt="Slide 3" width="200" height="200">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slidesContainer = document.querySelector('.slides');
+        const slides = document.querySelectorAll('.slide');
+        const intervalTime = 3000; // Time between slide changes in milliseconds
+
+        function changeSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+        // Automatically change slide every intervalTime
+        setInterval(changeSlide, intervalTime);
+    </script>
+    
+</body>
+</html>
